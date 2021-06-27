@@ -1,9 +1,9 @@
 class GotClass {
   constructor() {
-    this._apiBase = "https://www.anapioficeandfire.com/api";
+    this._apiBase = 'https://www.anapioficeandfire.com/api';
   }
 
-  getResource = async (url) => {
+  getResource = async url => {
     const res = await fetch(`${this._apiBase}${url}`);
 
     if (!res.ok) {
@@ -12,28 +12,30 @@ class GotClass {
     return await res.json();
   };
 
-  getAllBooks() {
-    return this.getResource(`/books/`);
+  async getAllBooks() {
+    return await this.getResource(`/books/`);
   }
 
-  getBook(id) {
-    return this.getResource(`/books/${id}/`);
+  async getBook(id) {
+    return await this.getResource(`/books/${id}/`);
   }
 
-  getAllCharacters() {
-    return this.getResource(`/characters?page=5&pageSize=10`);
+  async getAllCharacters() {
+    return await this.getResource(`/characters?page=5&pageSize=10`);
   }
 
-  getCharacter(id) {
-    return this.getResource(`/characters/${id}`);
+  async getCharacter(id) {
+    const response = await this.getResource(`/characters/${id}`);
+    console.log(response);
+    return response;
   }
 
-  getAllHouses() {
-    return this.getResource(`/houses/`);
+  async getAllHouses() {
+    return await this.getResource(`/houses/`);
   }
 
-  getHouse(id) {
-    return this.getResource(`/houses/${id}/`);
+  async getHouse(id) {
+    return await this.getResource(`/houses/${id}/`);
   }
 }
 
